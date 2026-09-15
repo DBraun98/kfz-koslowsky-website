@@ -25,10 +25,10 @@
       "Geregelte Arbeitszeiten"
     ],
     "offen": [
-      "Nur Vollzeit oder auch Teilzeit?",
-      "Arbeitszeiten konkret (z. B. Mo–Fr, 40 Std.)?",
-      "Gehaltsrahmen oder Stundenlohn – steigert die Zahl der Bewerbungen deutlich, wenn angegeben",
-      "Urlaubstage, Zuschläge, Arbeitskleidung, weitere Extras?"
+      "Suchst du nur in Vollzeit oder wäre Teilzeit auch möglich?",
+      "Wie sind die Arbeitszeiten genau – Mo bis Fr, 40 Stunden?",
+      "Willst du einen Gehaltsrahmen oder Stundenlohn nennen? Anzeigen mit Zahl bekommen deutlich mehr Bewerbungen – ich würde es dir empfehlen.",
+      "Was bietet ihr sonst noch – Urlaubstage, Zuschläge, Arbeitskleidung?"
     ]
   },
   {
@@ -56,8 +56,8 @@
       "Feste Ansprechpartner in der Werkstatt"
     ],
     "offen": [
-      "Bildet Eugen überhaupt aus? Wenn nicht: Anzeige löschen.",
-      "Ausbildungsbeginn, Vergütung, Berufsschule"
+      "Bildest du überhaupt aus? Wenn nicht, nehme ich die Anzeige wieder raus.",
+      "Wann würde die Ausbildung starten, was zahlst du, und wo ist die Berufsschule?"
     ]
   }
 ]

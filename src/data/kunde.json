@@ -35,7 +35,7 @@
       "ort": "Ehrenburg",
       "text": "Fahrzeug in Ehrenburg abgeben und dort wieder abholen.",
       "karte": "",
-      "todo": "Adresse und Ablauf der Annahme in Ehrenburg mit Eugen klären."
+      "todo": "Wie läuft die Annahme in Ehrenburg genau? Ich brauche die Adresse und was der Kunde dort machen muss."
     }
   ],
 
@@ -43,13 +43,13 @@
     { "tage": "Montag bis Freitag", "zeit": "8:00 – 18:00 Uhr" },
     { "tage": "Samstag und Sonntag", "zeit": "geschlossen" }
   ],
-  "oeffnungszeitenTodo": "Öffnungszeiten stammen aus einem Branchenverzeichnis – mit Eugen prüfen, ggf. Mittagspause ergänzen.",
+  "oeffnungszeitenTodo": "Die Zeiten habe ich aus einem Branchenverzeichnis übernommen. Stimmen die noch? Habt ihr Mittagspause?",
 
   "huau": {
     "tageKurz": "Di + Fr",
     "tageLang": "jeden Dienstag und Freitag",
     "text": "Hauptuntersuchung und Abgasuntersuchung machen wir direkt bei uns in der Werkstatt. Sie müssen nicht extra zur Prüfstelle fahren.",
-    "todo": "Welche Prüforganisation kommt (TÜV, DEKRA, GTÜ …)? Termin nötig oder ohne Anmeldung?"
+    "todo": "Welche Prüforganisation kommt zu euch – TÜV, DEKRA, GTÜ? Und brauchen die Kunden einen Termin oder können sie einfach vorbeikommen?"
   },
 
   "leistungen": [
@@ -89,13 +89,13 @@
       "Ich habe mein Handwerk von Grund auf gelernt, viele Jahre in einer freien Werkstatt gearbeitet und nebenbei den Meister gemacht. 2013 habe ich meinen eigenen Betrieb gegründet.",
       "Heute kümmern wir uns mit einem kleinen Team um Autos aus Kirchdorf, Ehrenburg und Umgebung. Sie wissen bei uns, wer an Ihrem Auto arbeitet."
     ],
-    "todo": "Text mit Eugen abstimmen. Teamgröße und Namen der Mitarbeiter ergänzen, wenn gewünscht.",
+    "todo": "Den Text habe ich so geschrieben, wie ich deinen Werdegang kenne – ändere alles, was nicht stimmt. Sollen wir dein Team mit Namen nennen?",
     "stationen": [
       {
         "zeit": "1998 – 2001",
         "titel": "Ausbildung",
         "text": "Ausbildung im KFZ-Handwerk.",
-        "todo": "Genauen Ausbildungsberuf ergänzen."
+        "todo": "Wie hieß dein Ausbildungsberuf damals genau?"
       },
       {
         "zeit": "danach",
@@ -121,7 +121,7 @@
   "partner": {
     "name": "AutoFit",
     "text": "Wir sind Partnerwerkstatt von AutoFit.",
-    "todo": "AutoFit-Logo erst einbauen, wenn die Nutzung erlaubt ist (Partnervertrag / Markenrichtlinien prüfen)."
+    "todo": "Darfst du das AutoFit-Logo auf der Website zeigen? Schau bitte in den Partnervertrag – ich baue es erst ein, wenn das geklärt ist."
   },
 
   "social": [
@@ -131,7 +131,7 @@
     { "name": "LinkedIn", "url": "https://www.linkedin.com/company/kfz-meisterbetrieb-koslowsky" },
     { "name": "WhatsApp", "url": "" }
   ],
-  "socialTodo": "Links prüfen und fehlende Profile ergänzen. Leere Einträge werden auf der fertigen Seite automatisch ausgeblendet.",
+  "socialTodo": "Sind die Links richtig? Falls ihr Instagram, ein Google-Profil oder WhatsApp habt, schick mir die Links. Was leer bleibt, blende ich auf der fertigen Seite aus.",
 
   "bewerbung": {
     "ansprechpartner": "Eugen Koslowsky",
@@ -141,7 +141,7 @@
       { "titel": "Kennenlernen", "text": "Wir zeigen dir die Werkstatt und sprechen in Ruhe." },
       { "titel": "Probearbeiten", "text": "Du arbeitest einen Tag mit und siehst, ob es passt." }
     ],
-    "todo": "Ablauf ist ein Vorschlag. Mit Eugen klären: Lebenslauf reicht? Probearbeiten üblich?"
+    "todo": "Den Ablauf habe ich mir so gedacht – passt das? Reicht dir ein Lebenslauf? Und lässt du Bewerber einen Tag probearbeiten?"
   },
 
   "rechtliches": {
@@ -150,7 +150,7 @@
     "berufsbezeichnung": "",
     "kammer": "",
     "handwerksrolle": "",
-    "todo": "USt-ID, Berufsbezeichnung (Meistertitel), zuständige Handwerkskammer und Eintrag in der Handwerksrolle von Eugen erfragen. Impressum rechtlich prüfen lassen."
+    "todo": "Dafür brauche ich von dir: USt-ID, deine genaue Berufsbezeichnung (Meistertitel), die zuständige Handwerkskammer und deinen Eintrag in der Handwerksrolle. Das Impressum schauen wir uns vor dem Livegang nochmal in Ruhe an."
   },
 
   "agentur": {
