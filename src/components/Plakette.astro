@@ -1,0 +1,99 @@
+---
+// Das Erkennungszeichen der Seite: eine HU-Plakette mit den Prüftagen.
+const { oben = 'HU/AU', mitte = 'Di + Fr', unten = 'jede Woche' } = Astro.props;
+
+const cx = 150;
+const cy = 150;
+const radius = 114;
+const monate = Array.from({ length: 12 }, (_, i) => {
+  const n = i + 1;
+  const winkel = (n * 30 * Math.PI) / 180;
+  return {
+    n,
+    x: (cx + radius * Math.sin(winkel)).toFixed(1),
+    y: (cy - radius * Math.cos(winkel) + 7).toFixed(1),
+  };
+});
+---
+
+<div class="plakette" role="img" aria-label={`${oben} ${unten}: ${mitte}`}>
+  <svg viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+    <circle class="p-grund" cx="150" cy="150" r="146"></circle>
+    <circle class="p-ring" cx="150" cy="150" r="137"></circle>
+    {
+      monate.map((m) => (
+        <text class="p-monat" x={m.x} y={m.y} text-anchor="middle">
+          {m.n}
+        </text>
+      ))
+    }
+    <path class="p-kerbe" d="M150 6 L139 32 L161 32 Z"></path>
+    <circle class="p-mitte" cx="150" cy="150" r="88"></circle>
+    <text class="p-oben" x="150" y="140" text-anchor="middle">{oben}</text>
+    <text class="p-tage" x="150" y="180" text-anchor="middle">{mitte}</text>
+    <text class="p-unten" x="150" y="206" text-anchor="middle">{unten}</text>
+  </svg>
+</div>
+
+<style>
+  .plakette {
+    width: min(100%, 22rem);
+    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.35));
+  }
+
+  svg {
+    width: 100%;
+    transform: rotate(-8deg);
+    animation: einrollen 1s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  }
+
+  @keyframes einrollen {
+    from {
+      transform: rotate(-140deg) scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: rotate(-8deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .p-grund {
+    fill: var(--rot);
+  }
+  .p-ring {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+  }
+  .p-kerbe {
+    fill: var(--navy-dunkel);
+  }
+  .p-mitte {
+    fill: #fff;
+  }
+  .p-monat {
+    fill: #fff;
+    font-family: var(--schrift-titel);
+    font-weight: 700;
+    font-size: 21px;
+  }
+  .p-oben {
+    fill: var(--navy);
+    font-family: var(--schrift-titel);
+    font-weight: 700;
+    font-size: 40px;
+  }
+  .p-tage {
+    fill: var(--rot);
+    font-family: var(--schrift-titel);
+    font-weight: 700;
+    font-size: 34px;
+  }
+  .p-unten {
+    fill: var(--stahl);
+    font-family: var(--schrift-text);
+    font-weight: 600;
+    font-size: 17px;
+  }
+</style>

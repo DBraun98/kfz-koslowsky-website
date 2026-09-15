@@ -1,0 +1,14 @@
+---
+// Gelbe Entwurfs-Notiz. Verschwindet automatisch, sobald "entwurf": false gesetzt ist.
+import kunde from '../data/kunde.json';
+const { text } = Astro.props;
+const zeigen = kunde.entwurf && (text === undefined || String(text).trim() !== '');
+---
+
+{
+  zeigen && (
+    <aside class="hinweis">
+      <strong>Zu klären:</strong> {text ?? <slot />}
+    </aside>
+  )
+}

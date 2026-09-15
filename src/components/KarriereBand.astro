@@ -1,0 +1,59 @@
+---
+import { stellen } from '../lib/stellen.js';
+import { url } from '../lib/url.js';
+const echte = stellen.filter((s) => !s.platzhalter);
+const erste = echte[0] ?? stellen[0];
+---
+
+{
+  erste && (
+    <section class="band" aria-label="Offene Stellen">
+      <div class="wrap band__innen">
+        <p class="band__text">
+          <strong>Wir stellen ein:</strong> {erste.titel}
+          {stellen.length > 1 && <span> und {stellen.length - 1} weitere Stelle{stellen.length > 2 ? 'n' : ''}</span>}
+        </p>
+        <a class="btn band__btn" href={url('karriere/')}>
+          Offene Stellen ansehen
+        </a>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .band {
+    background: var(--rot);
+    color: var(--weiss);
+  }
+
+  .band__innen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem;
+  }
+
+  .band__text {
+    margin: 0;
+    font-size: 1.2rem;
+    max-width: none;
+  }
+
+  .band__text strong {
+    font-family: var(--schrift-titel);
+    font-weight: 700;
+  }
+
+  .band__btn {
+    background: var(--weiss);
+    color: var(--rot-dunkel);
+  }
+
+  .band__btn:hover {
+    background: var(--navy-dunkel);
+    color: var(--weiss);
+  }
+</style>

@@ -1,0 +1,139 @@
+---
+import kunde from '../data/kunde.json';
+import { telLink } from '../lib/url.js';
+import Icon from './Icon.astro';
+import Social from './Social.astro';
+import Hinweis from './Hinweis.astro';
+const k = kunde.kontakt;
+---
+
+<section id="kontakt" class="abschnitt abschnitt--navy">
+  <div class="wrap kontakt">
+    <div>
+      <h2>So erreichen Sie uns</h2>
+      <p class="einleitung">
+        Am schnellsten geht es per Telefon. Termine für Inspektion, Reifenwechsel oder HU/AU machen wir direkt am Telefon aus.
+      </p>
+      <h3 class="kontakt__social">Folgen Sie uns</h3>
+      <Social hell />
+      <Hinweis text={kunde.socialTodo} />
+    </div>
+
+    <ul class="wege">
+      <li>
+        <a href={telLink(k.telefon)}>
+          <Icon name="telefon" />
+          <span><small>Werkstatt</small>{k.telefonAnzeige}</span>
+        </a>
+      </li>
+      {
+        k.mobil && (
+          <li>
+            <a href={telLink(k.mobil)}>
+              <Icon name="mobil" />
+              <span><small>Mobil</small>{k.mobilAnzeige}</span>
+            </a>
+          </li>
+        )
+      }
+      <li>
+        <a href={`mailto:${k.email}`}>
+          <Icon name="mail" />
+          <span><small>E-Mail</small>{k.email}</span>
+        </a>
+      </li>
+      {
+        k.whatsapp ? (
+          <li>
+            <a href={`https://wa.me/${k.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener">
+              <Icon name="chat" />
+              <span><small>WhatsApp</small>Nachricht schreiben</span>
+            </a>
+          </li>
+        ) : (
+          kunde.entwurf && (
+            <li class="wege__leer">
+              <span>
+                <Icon name="chat" />
+                <span><small>WhatsApp</small>Nummer fehlt – gewünscht?</span>
+              </span>
+            </li>
+          )
+        )
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .kontakt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .kontakt__social {
+    margin-top: 1.5rem;
+    font-size: 1.15rem;
+  }
+
+  .wege {
+    list-style: none;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .wege a,
+  .wege__leer > span {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    font-family: var(--schrift-titel);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    word-break: break-word;
+  }
+
+  .wege a:hover {
+    background: var(--rot);
+    border-color: var(--rot);
+    color: var(--weiss);
+  }
+
+  .wege :global(svg) {
+    width: 1.8rem;
+    height: 1.8rem;
+    flex: none;
+  }
+
+  .wege small {
+    display: block;
+    font-family: var(--schrift-text);
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #c9d4e0;
+  }
+
+  .wege__leer > span {
+    background: var(--gelb);
+    color: var(--tinte);
+    border: 1.5px dashed var(--gelb-rand);
+    font-size: 1.1rem;
+  }
+
+  .wege__leer small {
+    color: var(--stahl);
+  }
+
+  @media (max-width: 820px) {
+    .kontakt {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

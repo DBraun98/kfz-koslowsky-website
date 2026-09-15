@@ -1,0 +1,131 @@
+---
+import kunde from '../data/kunde.json';
+import Icon from './Icon.astro';
+import Hinweis from './Hinweis.astro';
+import Platzhalter from './Platzhalter.astro';
+---
+
+<section id="anfahrt" class="abschnitt">
+  <div class="wrap">
+    <h2>Öffnungszeiten und Anfahrt</h2>
+    <p class="einleitung">Sie können Ihr Auto in Kirchdorf oder in Ehrenburg bei uns abgeben.</p>
+
+    <div class="anfahrt">
+      <div class="zeiten">
+        <h3><Icon name="uhr" /> Öffnungszeiten</h3>
+        <dl>
+          {
+            kunde.oeffnungszeiten.map((o) => (
+              <div>
+                <dt>{o.tage}</dt>
+                <dd>{o.zeit}</dd>
+              </div>
+            ))
+          }
+          <div class="zeiten__huau">
+            <dt>HU/AU</dt>
+            <dd>{kunde.huau.tageLang}</dd>
+          </div>
+        </dl>
+        <Hinweis text={kunde.oeffnungszeitenTodo} />
+      </div>
+
+      {
+        kunde.standorte.map((s) => (
+          <div class="ort">
+            <h3>
+              <Icon name="ort" /> {s.name}
+            </h3>
+            <p class="ort__adresse">
+              {s.strasse && (
+                <>
+                  {s.strasse}
+                  <br />
+                </>
+              )}
+              {s.ort}
+            </p>
+            <p>{s.text}</p>
+            {s.karte && (
+              <a class="btn btn--rahmen-dunkel" href={s.karte} target="_blank" rel="noopener">
+                Route planen
+                <span class="unsichtbar">(Google Maps, öffnet in neuem Tab)</span>
+              </a>
+            )}
+            <Hinweis text={s.todo} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="anfahrt__foto">
+      <Platzhalter label="Foto: Werkstatt von außen – damit man sie von der Straße wiedererkennt" format="21 / 8" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .anfahrt {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--navy);
+  }
+
+  h3 :global(svg) {
+    width: 1.4rem;
+    height: 1.4rem;
+    color: var(--rot);
+  }
+
+  dl {
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--linie);
+  }
+
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    text-align: right;
+  }
+
+  .zeiten__huau dd {
+    color: var(--rot-dunkel);
+    font-weight: 600;
+  }
+
+  .ort__adresse {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .anfahrt__foto {
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 900px) {
+    .anfahrt {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

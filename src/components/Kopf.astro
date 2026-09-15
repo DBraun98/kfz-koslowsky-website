@@ -1,0 +1,214 @@
+---
+import kunde from '../data/kunde.json';
+import { stellen } from '../lib/stellen.js';
+import { url, telLink } from '../lib/url.js';
+import Icon from './Icon.astro';
+
+const links = [
+  { href: url('#leistungen'), text: 'Leistungen' },
+  { href: url('#ueber-uns'), text: 'Über uns' },
+  { href: url('#anfahrt'), text: 'Anfahrt' },
+  { href: url('karriere/'), text: 'Karriere', stellen: stellen.length > 0 },
+  { href: url('#kontakt'), text: 'Kontakt' },
+];
+---
+
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="kopf__logo" href={url('')}>
+      <img src={url('img/logo.png')} alt={`${kunde.firma} – zur Startseite`} width="800" height="346" />
+    </a>
+
+    <nav class="kopf__nav" aria-label="Hauptmenü">
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href}>
+                {l.text}
+                {l.stellen && <span class="kopf__marke">Wir stellen ein</span>}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a class="btn btn--rot kopf__anruf" href={telLink(kunde.kontakt.telefon)}>
+      <Icon name="telefon" />
+      <span class="kopf__nummer">{kunde.kontakt.telefonAnzeige}</span>
+      <span class="kopf__kurz">Anrufen</span>
+    </a>
+
+    <details class="kopf__menue">
+      <summary>
+        <Icon name="menue" />
+        <span>Menü</span>
+      </summary>
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href}>
+                {l.text}
+                {l.stellen && <span class="kopf__marke">Wir stellen ein</span>}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </div>
+</header>
+
+<script>
+  // Mobiles Menü nach Klick auf einen Link schließen
+  const menue = document.querySelector('.kopf__menue');
+  menue?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => menue.removeAttribute('open'))
+  );
+</script>
+
+<style>
+  .kopf {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--weiss);
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .kopf__innen {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: var(--kopf-hoehe);
+    position: relative;
+  }
+
+  .kopf__logo img {
+    height: 3.6rem;
+    width: auto;
+  }
+
+  .kopf__nav {
+    margin-left: auto;
+  }
+
+  .kopf__nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.4rem;
+  }
+
+  .kopf__nav a,
+  .kopf__menue a {
+    font-family: var(--schrift-titel);
+    font-weight: 600;
+    font-size: 1.12rem;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .kopf__nav a:hover {
+    color: var(--rot);
+  }
+
+  .kopf__marke {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 0.05rem 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--weiss);
+    background: var(--rot);
+    border-radius: var(--radius);
+    vertical-align: 0.15em;
+  }
+
+  .kopf__kurz {
+    display: none;
+  }
+
+  .kopf__menue {
+    display: none;
+  }
+
+  @media (max-width: 1000px) {
+    .kopf__nav {
+      display: none;
+    }
+
+    .kopf__anruf {
+      margin-left: auto;
+      padding: 0.7rem 1rem;
+    }
+
+    .kopf__nummer {
+      display: none;
+    }
+
+    .kopf__kurz {
+      display: inline;
+    }
+
+    .kopf__menue {
+      display: block;
+    }
+
+    .kopf__menue summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      padding: 0.7rem 0.8rem;
+      border: 2px solid var(--navy);
+      border-radius: var(--radius);
+      color: var(--navy);
+      font-family: var(--schrift-titel);
+      font-weight: 700;
+    }
+
+    .kopf__menue summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .kopf__menue summary :global(svg) {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .kopf__menue ul {
+      list-style: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      background: var(--weiss);
+      border-bottom: 3px solid var(--rot);
+      padding: 0.5rem 1.25rem 1rem;
+      box-shadow: 0 12px 20px rgba(22, 32, 43, 0.12);
+    }
+
+    .kopf__menue li a {
+      display: block;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--linie);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .kopf__innen {
+      gap: 0.6rem;
+    }
+
+    .kopf__logo img {
+      height: 2.9rem;
+    }
+
+    .kopf__menue summary span {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+{
+  "name": "kfz-koslowsky-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/saira-semi-condensed": "latest",
+    "@fontsource/source-sans-3": "latest",
+    "astro": "latest"
+  }
+}

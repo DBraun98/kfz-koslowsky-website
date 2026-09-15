@@ -1,0 +1,80 @@
+---
+// Social-Links. Leere Links: im Entwurf als Platzhalter, danach ausgeblendet.
+import kunde from '../data/kunde.json';
+import Icon from './Icon.astro';
+const { hell = false } = Astro.props;
+const eintraege = kunde.social.filter((s) => s.url || kunde.entwurf);
+---
+
+{
+  eintraege.length > 0 && (
+    <ul class:list={['social', { 'social--hell': hell }]}>
+      {eintraege.map((s) => (
+        <li>
+          {s.url ? (
+            <a href={s.url} target="_blank" rel="noopener">
+              {s.name}
+              <Icon name="extern" />
+              <span class="unsichtbar">(öffnet in neuem Tab)</span>
+            </a>
+          ) : (
+            <span class="leer">{s.name}: Link fehlt</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .social {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  a,
+  .leer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  a {
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+  }
+
+  a:hover {
+    background: var(--navy);
+    color: var(--weiss);
+  }
+
+  a :global(svg) {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .leer {
+    border: 1.5px dashed var(--gelb-rand);
+    background: var(--gelb);
+    color: var(--tinte);
+    font-weight: 400;
+  }
+
+  .social--hell a {
+    border-color: rgba(255, 255, 255, 0.7);
+    color: var(--weiss);
+  }
+
+  .social--hell a:hover {
+    background: var(--weiss);
+    color: var(--navy);
+  }
+</style>

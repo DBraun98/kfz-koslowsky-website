@@ -1,0 +1,139 @@
+---
+import kunde from '../data/kunde.json';
+import Hinweis from './Hinweis.astro';
+import Platzhalter from './Platzhalter.astro';
+const u = kunde.ueberUns;
+---
+
+<section id="ueber-uns" class="abschnitt abschnitt--beton">
+  <div class="wrap ueber">
+    <div class="ueber__bild">
+      <Platzhalter label="Foto: Eugen in der Werkstatt" format="4 / 5" />
+      <div class="ueber__partner">
+        <Platzhalter label="Logo AutoFit" format="3 / 1" />
+        <p>{kunde.partner.text}</p>
+        <Hinweis text={kunde.partner.todo} />
+      </div>
+    </div>
+
+    <div class="ueber__text">
+      <h2>{u.titel}</h2>
+      {u.absaetze.map((a) => <p>{a}</p>)}
+      <Hinweis text={u.todo} />
+
+      <h3 class="ueber__zwischentitel">Werdegang</h3>
+      <ol class="werdegang">
+        {
+          u.stationen.map((s) => (
+            <li>
+              <span class="werdegang__zeit">{s.zeit}</span>
+              <div>
+                <strong>{s.titel}</strong>
+                <p>{s.text}</p>
+                <Hinweis text={s.todo} />
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+
+  <div class="wrap ueber__team">
+    <Platzhalter label="Foto: das Team vor der Werkstatt" format="21 / 9" />
+  </div>
+</section>
+
+<style>
+  .ueber {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .ueber__partner {
+    margin-top: 1.5rem;
+    max-width: 18rem;
+  }
+
+  .ueber__partner p {
+    margin: 0.6rem 0 0;
+    font-size: 1rem;
+  }
+
+  .ueber__text h2 {
+    color: var(--navy);
+  }
+
+  .ueber__zwischentitel {
+    margin-top: 2.2rem;
+    color: var(--navy);
+  }
+
+  .werdegang {
+    list-style: none;
+    position: relative;
+    display: grid;
+    gap: 1.4rem;
+    padding-left: 1.4rem;
+  }
+
+  .werdegang::before {
+    content: '';
+    position: absolute;
+    left: 0.3rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: var(--linie);
+  }
+
+  .werdegang li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1rem;
+  }
+
+  .werdegang li::before {
+    content: '';
+    position: absolute;
+    left: -1.4rem;
+    top: 0.45rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--rot);
+    border: 2px solid var(--beton);
+  }
+
+  .werdegang__zeit {
+    font-family: var(--schrift-titel);
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .werdegang p {
+    margin: 0.1rem 0 0;
+  }
+
+  .ueber__team {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  @media (max-width: 820px) {
+    .ueber {
+      grid-template-columns: 1fr;
+    }
+
+    .ueber__bild {
+      max-width: 24rem;
+    }
+
+    .werdegang li {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+  }
+</style>

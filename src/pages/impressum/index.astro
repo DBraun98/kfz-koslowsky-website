@@ -1,0 +1,70 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import kunde from '../../data/kunde.json';
+import Hinweis from '../../components/Hinweis.astro';
+
+const h = kunde.standorte[0];
+const r = kunde.rechtliches;
+const k = kunde.kontakt;
+const fehlt = (wert) => wert || (kunde.entwurf ? '[fehlt]' : '');
+---
+
+<Basis titel="Impressum">
+  <section class="abschnitt">
+    <div class="wrap recht">
+      <h1>Impressum</h1>
+      <Hinweis text={`${r.todo} Die Paragraphen-Angaben vor dem Livegang prüfen.`} />
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>
+        {kunde.inhaber}<br />
+        {kunde.firma}<br />
+        {h.strasse}<br />
+        {h.ort}
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: {k.telefonAnzeige}<br />
+        {k.mobil && <>Mobil: {k.mobilAnzeige}<br /></>}
+        E-Mail: {k.email}
+      </p>
+
+      {
+        (r.ustId || kunde.entwurf) && (
+          <>
+            <h2>Umsatzsteuer-ID</h2>
+            <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: {fehlt(r.ustId)}</p>
+          </>
+        )
+      }
+
+      <h2>Berufsrechtliche Angaben</h2>
+      <p>
+        Berufsbezeichnung: {fehlt(r.berufsbezeichnung)} (verliehen in der Bundesrepublik Deutschland)<br />
+        Zuständige Kammer: {fehlt(r.kammer)}<br />
+        Eintragung in der Handwerksrolle: {fehlt(r.handwerksrolle)}<br />
+        Berufsrechtliche Regelung: Handwerksordnung (HwO)
+      </p>
+
+      <h2>Verbraucherstreitbeilegung</h2>
+      <p>
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+      <Hinweis text="Formulierung zur Streitbeilegung mit Eugen abstimmen und rechtlich prüfen lassen." />
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .recht {
+    max-width: 48rem;
+  }
+
+  .recht h2 {
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-top: 2rem;
+  }
+</style>

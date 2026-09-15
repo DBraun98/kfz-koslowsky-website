@@ -1,0 +1,295 @@
+/* ------------------------------------------------------------
+   Farben und Schriften – für neue Kunden nur diesen Block anpassen
+   ------------------------------------------------------------ */
+:root {
+  --navy: #243e5b;
+  --navy-dunkel: #172a3f;
+  --rot: #e2001a;
+  --rot-dunkel: #b80015;
+  --stahl: #56657a;
+  --beton: #edf0f3;
+  --linie: #d3dae2;
+  --tinte: #16202b;
+  --weiss: #ffffff;
+  --gelb: #fff3c4;
+  --gelb-rand: #d9a900;
+
+  --schrift-titel: 'Saira Semi Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --schrift-text: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --breite: 74rem;
+  --radius: 4px;
+  --kopf-hoehe: 5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--kopf-hoehe) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--schrift-text);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--tinte);
+  background: var(--weiss);
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  line-height: 1.08;
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.4rem);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 64ch;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--navy);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--rot-dunkel);
+}
+
+:focus-visible {
+  outline: 3px solid var(--rot);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+
+.wrap {
+  max-width: var(--breite);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.abschnitt {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+}
+
+.abschnitt--beton {
+  background: var(--beton);
+}
+
+.abschnitt--navy {
+  background: var(--navy);
+  color: var(--weiss);
+}
+
+.abschnitt--navy a {
+  color: var(--weiss);
+}
+
+.einleitung {
+  font-size: 1.25rem;
+  color: var(--stahl);
+  margin-bottom: 2.5rem;
+}
+
+.abschnitt--navy .einleitung {
+  color: #c9d4e0;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.1;
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
+.btn--rot {
+  background: var(--rot);
+  color: var(--weiss);
+}
+
+.btn--rot:hover {
+  background: var(--rot-dunkel);
+  color: var(--weiss);
+}
+
+.btn--navy {
+  background: var(--navy);
+  color: var(--weiss);
+}
+
+.btn--navy:hover {
+  background: var(--navy-dunkel);
+  color: var(--weiss);
+}
+
+.btn--rahmen {
+  border-color: currentColor;
+  color: var(--weiss);
+  background: transparent;
+}
+
+.btn--rahmen:hover {
+  background: var(--weiss);
+  border-color: var(--weiss);
+  color: var(--navy);
+}
+
+.btn--rahmen-dunkel {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: transparent;
+}
+
+.btn--rahmen-dunkel:hover {
+  background: var(--navy);
+  color: var(--weiss);
+}
+
+/* ---------- Kleinteile ---------- */
+
+.merkmal {
+  display: inline-block;
+  font-size: 0.95rem;
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  background: var(--weiss);
+  color: var(--tinte);
+}
+
+.hakenliste {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.hakenliste li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.hakenliste svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: none;
+  margin-top: 0.25rem;
+  color: var(--rot);
+}
+
+.unsichtbar {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.sprunglink {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--navy);
+  color: var(--weiss);
+  padding: 0.6rem 1rem;
+}
+
+.sprunglink:focus {
+  top: 1rem;
+}
+
+/* ---------- Entwurfs-Markierungen ---------- */
+
+.entwurf-leiste {
+  background: var(--gelb);
+  border-bottom: 2px solid var(--gelb-rand);
+  font-size: 0.95rem;
+  padding: 0.5rem 1.25rem;
+  text-align: center;
+}
+
+.hinweis {
+  background: var(--gelb);
+  border-left: 5px solid var(--gelb-rand);
+  color: var(--tinte);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  padding: 0.6rem 0.9rem;
+  margin-block: 1rem;
+  max-width: 64ch;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.hinweis strong {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

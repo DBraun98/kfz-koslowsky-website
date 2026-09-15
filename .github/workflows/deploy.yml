@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Bei jedem Push auf main neu veröffentlichen
+  push:
+    branches: [ main ]
+  # Manuell starten über den Reiter "Actions"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v7
+      - name: Installieren, bauen und hochladen
+        uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,102 @@
+---
+import kunde from '../data/kunde.json';
+import Hinweis from './Hinweis.astro';
+---
+
+<section id="leistungen" class="abschnitt">
+  <div class="wrap">
+    <h2>Was wir für Ihr Auto tun</h2>
+    <p class="einleitung">
+      Wir reparieren und warten Pkw aller Marken. Rufen Sie an – wir sagen Ihnen, was zu tun ist und was es kostet.
+    </p>
+
+    <div class="huau">
+      <div class="huau__kopf">
+        <span class="huau__titel">HU/AU</span>
+        <span class="huau__tage">{kunde.huau.tageLang}</span>
+      </div>
+      <div>
+        <p>{kunde.huau.text}</p>
+        <Hinweis text={kunde.huau.todo} />
+      </div>
+    </div>
+
+    <ul class="leistungen">
+      {
+        kunde.leistungen.map((l) => (
+          <li>
+            <h3>{l.titel}</h3>
+            <p>{l.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .huau {
+    display: grid;
+    grid-template-columns: minmax(14rem, 1fr) 2fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.8rem 2rem;
+    margin-bottom: 3rem;
+    background: var(--beton);
+    border-left: 8px solid var(--rot);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .huau__kopf {
+    display: grid;
+  }
+
+  .huau__titel {
+    font-family: var(--schrift-titel);
+    font-weight: 700;
+    font-size: clamp(2.6rem, 6vw, 3.6rem);
+    line-height: 1;
+    color: var(--navy);
+  }
+
+  .huau__tage {
+    font-family: var(--schrift-titel);
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--rot-dunkel);
+  }
+
+  .huau p {
+    margin: 0;
+  }
+
+  .leistungen {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 2.2rem 2.5rem;
+  }
+
+  .leistungen li {
+    border-top: 3px solid var(--navy);
+    padding-top: 1rem;
+  }
+
+  .leistungen h3 {
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+
+  .leistungen p {
+    margin: 0;
+    color: #3b4757;
+  }
+
+  @media (max-width: 700px) {
+    .huau {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      padding: 1.4rem;
+    }
+  }
+</style>

@@ -1,0 +1,160 @@
+{
+  "entwurf": true,
+
+  "firma": "KFZ-Meisterbetrieb Koslowsky",
+  "kurzname": "KFZ Koslowsky",
+  "inhaber": "Eugen Koslowsky",
+  "seit": 2013,
+  "domain": "www.kfz-koslowsky.de",
+
+  "claim": "Ihre KFZ-Meisterwerkstatt in Kirchdorf",
+  "intro": "Reparatur und Wartung für Pkw aller Marken. Vom Ölwechsel bis zur Achsvermessung – mit Meisterbrief und einem festen Ansprechpartner.",
+  "fakten": ["Meisterbetrieb seit 2013", "Alle Pkw-Marken", "Fahrzeugannahme in Kirchdorf und Ehrenburg"],
+
+  "kontakt": {
+    "telefon": "+49 4273 9795535",
+    "telefonAnzeige": "0 42 73 – 979 55 35",
+    "mobil": "+49 174 7506241",
+    "mobilAnzeige": "0174 – 75 06 241",
+    "email": "info@kfz-koslowsky.de",
+    "whatsapp": ""
+  },
+
+  "standorte": [
+    {
+      "name": "Werkstatt Kirchdorf",
+      "strasse": "Barenburger Straße 10",
+      "ort": "27245 Kirchdorf",
+      "text": "Hier steht die Werkstatt. Reparatur, Wartung und HU/AU.",
+      "karte": "https://www.google.com/maps/search/?api=1&query=Barenburger+Stra%C3%9Fe+10+27245+Kirchdorf",
+      "todo": ""
+    },
+    {
+      "name": "Fahrzeugannahme Ehrenburg",
+      "strasse": "",
+      "ort": "Ehrenburg",
+      "text": "Fahrzeug in Ehrenburg abgeben und dort wieder abholen.",
+      "karte": "",
+      "todo": "Adresse und Ablauf der Annahme in Ehrenburg mit Eugen klären."
+    }
+  ],
+
+  "oeffnungszeiten": [
+    { "tage": "Montag bis Freitag", "zeit": "8:00 – 18:00 Uhr" },
+    { "tage": "Samstag und Sonntag", "zeit": "geschlossen" }
+  ],
+  "oeffnungszeitenTodo": "Öffnungszeiten stammen aus einem Branchenverzeichnis – mit Eugen prüfen, ggf. Mittagspause ergänzen.",
+
+  "huau": {
+    "tageKurz": "Di + Fr",
+    "tageLang": "jeden Dienstag und Freitag",
+    "text": "Hauptuntersuchung und Abgasuntersuchung machen wir direkt bei uns in der Werkstatt. Sie müssen nicht extra zur Prüfstelle fahren.",
+    "todo": "Welche Prüforganisation kommt (TÜV, DEKRA, GTÜ …)? Termin nötig oder ohne Anmeldung?"
+  },
+
+  "leistungen": [
+    {
+      "titel": "Inspektion nach Herstellervorgabe",
+      "text": "Wartung nach den Vorgaben des Herstellers – für Pkw aller Marken."
+    },
+    {
+      "titel": "Reparatur und Diagnose",
+      "text": "Fehlersuche mit moderner Diagnosetechnik und Reparatur, wenn etwas nicht mehr rund läuft."
+    },
+    {
+      "titel": "Klimaanlagen-Service",
+      "text": "Prüfen, reinigen und neu befüllen, damit die Klimaanlage wieder richtig kühlt."
+    },
+    {
+      "titel": "Autoglas-Reparatur",
+      "text": "Steinschlag reparieren oder die Scheibe tauschen."
+    },
+    {
+      "titel": "Getriebespülung",
+      "text": "Getriebeöl vollständig wechseln – besonders bei Automatikgetrieben sinnvoll."
+    },
+    {
+      "titel": "3D-Achsvermessung",
+      "text": "Spur und Sturz genau einstellen. Das schont die Reifen und das Auto läuft sauber geradeaus."
+    },
+    {
+      "titel": "Reifenservice und Einlagerung",
+      "text": "Reifen wechseln, auswuchten und Ihre Räder bis zur nächsten Saison bei uns lagern."
+    }
+  ],
+
+  "ueberUns": {
+    "titel": "Ihr Ansprechpartner: Eugen Koslowsky",
+    "absaetze": [
+      "Ich habe mein Handwerk von Grund auf gelernt, viele Jahre in einer freien Werkstatt gearbeitet und nebenbei den Meister gemacht. 2013 habe ich meinen eigenen Betrieb gegründet.",
+      "Heute kümmern wir uns mit einem kleinen Team um Autos aus Kirchdorf, Ehrenburg und Umgebung. Sie wissen bei uns, wer an Ihrem Auto arbeitet."
+    ],
+    "todo": "Text mit Eugen abstimmen. Teamgröße und Namen der Mitarbeiter ergänzen, wenn gewünscht.",
+    "stationen": [
+      {
+        "zeit": "1998 – 2001",
+        "titel": "Ausbildung",
+        "text": "Ausbildung im KFZ-Handwerk.",
+        "todo": "Genauen Ausbildungsberuf ergänzen."
+      },
+      {
+        "zeit": "danach",
+        "titel": "Freie Werkstatt",
+        "text": "Mehrere Jahre in einer freien Werkstatt mit Schwerpunkt BMW.",
+        "todo": ""
+      },
+      {
+        "zeit": "2010 – 2011",
+        "titel": "Meisterschule",
+        "text": "Meisterausbildung berufsbegleitend in der Abendschule.",
+        "todo": ""
+      },
+      {
+        "zeit": "2013",
+        "titel": "Eigener Betrieb",
+        "text": "Gründung des KFZ-Meisterbetriebs Koslowsky.",
+        "todo": ""
+      }
+    ]
+  },
+
+  "partner": {
+    "name": "AutoFit",
+    "text": "Wir sind Partnerwerkstatt von AutoFit.",
+    "todo": "AutoFit-Logo erst einbauen, wenn die Nutzung erlaubt ist (Partnervertrag / Markenrichtlinien prüfen)."
+  },
+
+  "social": [
+    { "name": "Facebook", "url": "https://www.facebook.com/kfzkoslowskykirchdorf/" },
+    { "name": "Instagram", "url": "" },
+    { "name": "Google-Profil", "url": "" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/company/kfz-meisterbetrieb-koslowsky" },
+    { "name": "WhatsApp", "url": "" }
+  ],
+  "socialTodo": "Links prüfen und fehlende Profile ergänzen. Leere Einträge werden auf der fertigen Seite automatisch ausgeblendet.",
+
+  "bewerbung": {
+    "ansprechpartner": "Eugen Koslowsky",
+    "text": "Schick uns ein paar Zeilen und deinen Lebenslauf per Mail – oder ruf einfach an. Zeugnisse können wir auch später nachreichen lassen.",
+    "schritte": [
+      { "titel": "Melden", "text": "Per Mail, Telefon oder direkt in der Werkstatt." },
+      { "titel": "Kennenlernen", "text": "Wir zeigen dir die Werkstatt und sprechen in Ruhe." },
+      { "titel": "Probearbeiten", "text": "Du arbeitest einen Tag mit und siehst, ob es passt." }
+    ],
+    "todo": "Ablauf ist ein Vorschlag. Mit Eugen klären: Lebenslauf reicht? Probearbeiten üblich?"
+  },
+
+  "rechtliches": {
+    "rechtsform": "Einzelunternehmen",
+    "ustId": "",
+    "berufsbezeichnung": "",
+    "kammer": "",
+    "handwerksrolle": "",
+    "todo": "USt-ID, Berufsbezeichnung (Meistertitel), zuständige Handwerkskammer und Eintrag in der Handwerksrolle von Eugen erfragen. Impressum rechtlich prüfen lassen."
+  },
+
+  "agentur": {
+    "name": "Peterschun",
+    "url": "https://peterschun.com"
+  }
+}

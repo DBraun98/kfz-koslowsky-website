@@ -1,0 +1,106 @@
+---
+import kunde from '../data/kunde.json';
+import { url, telLink } from '../lib/url.js';
+import Social from './Social.astro';
+const hauptstandort = kunde.standorte[0];
+---
+
+<footer class="fuss">
+  <div class="wrap fuss__raster">
+    <div>
+      <img class="fuss__logo" src={url('img/logo.png')} alt={kunde.firma} width="800" height="346" loading="lazy" />
+    </div>
+
+    <div>
+      <h2 class="fuss__titel">Werkstatt</h2>
+      <p>
+        {kunde.firma}<br />
+        {hauptstandort.strasse}<br />
+        {hauptstandort.ort}
+      </p>
+    </div>
+
+    <div>
+      <h2 class="fuss__titel">Kontakt</h2>
+      <p>
+        <a href={telLink(kunde.kontakt.telefon)}>{kunde.kontakt.telefonAnzeige}</a><br />
+        <a href={`mailto:${kunde.kontakt.email}`}>{kunde.kontakt.email}</a>
+      </p>
+      <Social />
+    </div>
+
+    <div>
+      <h2 class="fuss__titel">Seiten</h2>
+      <ul class="fuss__links">
+        <li><a href={url('karriere/')}>Karriere</a></li>
+        <li><a href={url('impressum/')}>Impressum</a></li>
+        <li><a href={url('datenschutz/')}>Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap fuss__unten">
+    <span>© {new Date().getFullYear()} {kunde.firma}</span>
+    <span>Website: <a href={kunde.agentur.url}>{kunde.agentur.name}</a></span>
+  </div>
+</footer>
+
+<style>
+  .fuss {
+    background: var(--beton);
+    border-top: 4px solid var(--rot);
+    padding-top: 3rem;
+    font-size: 1rem;
+  }
+
+  .fuss__raster {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.2fr 0.8fr;
+    gap: 2rem;
+  }
+
+  .fuss__logo {
+    width: 14rem;
+    max-width: 100%;
+  }
+
+  .fuss__titel {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .fuss__links {
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .fuss__unten {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-block: 1.2rem;
+    border-top: 1px solid var(--linie);
+    color: var(--stahl);
+    font-size: 0.92rem;
+  }
+
+  .fuss__unten a {
+    color: var(--stahl);
+  }
+
+  @media (max-width: 860px) {
+    .fuss__raster {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .fuss__raster {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

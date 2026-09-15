@@ -1,0 +1,63 @@
+[
+  {
+    "slug": "kfz-mechatroniker",
+    "titel": "KFZ-Mechaniker / Mechatroniker (m/w/d)",
+    "platzhalter": false,
+    "veroeffentlicht": "2026-09-15",
+    "art": "Vollzeit",
+    "start": "ab sofort",
+    "ort": "Kirchdorf",
+    "kurz": "Du reparierst und wartest Pkw aller Marken – mit moderner Diagnosetechnik und in einem Team, in dem man sich kennt.",
+    "aufgaben": [
+      "Reparaturen und Wartungen an Pkw aller Marken",
+      "Fehlersuche mit moderner Diagnosetechnik",
+      "Arbeiten aus unserem Alltag: Inspektion, Klimaservice, Reifen und Achsvermessung"
+    ],
+    "profil": [
+      "Abgeschlossene Ausbildung als KFZ-Mechaniker oder KFZ-Mechatroniker",
+      "Mehrjährige Berufserfahrung ist gern gesehen",
+      "Führerschein Klasse B"
+    ],
+    "angebot": [
+      "Familiäres Betriebsklima",
+      "Ein freundliches, serviceorientiertes Team",
+      "Regelmäßige Weiterbildungen",
+      "Geregelte Arbeitszeiten"
+    ],
+    "offen": [
+      "Nur Vollzeit oder auch Teilzeit?",
+      "Arbeitszeiten konkret (z. B. Mo–Fr, 40 Std.)?",
+      "Gehaltsrahmen oder Stundenlohn – steigert die Zahl der Bewerbungen deutlich, wenn angegeben",
+      "Urlaubstage, Zuschläge, Arbeitskleidung, weitere Extras?"
+    ]
+  },
+  {
+    "slug": "ausbildung-kfz-mechatroniker",
+    "titel": "Ausbildung zum KFZ-Mechatroniker (m/w/d)",
+    "platzhalter": true,
+    "veroeffentlicht": "2026-09-15",
+    "art": "Ausbildung, 3,5 Jahre",
+    "start": "Ausbildungsbeginn ergänzen",
+    "ort": "Kirchdorf",
+    "kurz": "Du willst wissen, wie Autos funktionieren – und sie wieder zum Laufen bringen? Dann lern das bei uns.",
+    "aufgaben": [
+      "Wartung und Inspektion von Anfang an mitmachen",
+      "Fehlersuche mit Diagnosetechnik lernen",
+      "Reifen, Bremsen, Klimaanlage und mehr"
+    ],
+    "profil": [
+      "Interesse an Technik und Autos",
+      "Handwerkliches Geschick",
+      "Schulabschluss – Anforderung mit Eugen klären"
+    ],
+    "angebot": [
+      "Familiäres Betriebsklima",
+      "Ausbildung im Meisterbetrieb",
+      "Feste Ansprechpartner in der Werkstatt"
+    ],
+    "offen": [
+      "Bildet Eugen überhaupt aus? Wenn nicht: Anzeige löschen.",
+      "Ausbildungsbeginn, Vergütung, Berufsschule"
+    ]
+  }
+]

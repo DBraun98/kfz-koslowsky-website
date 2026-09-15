@@ -1,0 +1,37 @@
+---
+// Fläche für ein späteres Foto. Im Entwurf mit Beschriftung.
+const { label = 'Foto', format = '4 / 3', klasse = '' } = Astro.props;
+---
+
+<div class={`platzhalter ${klasse}`} style={`aspect-ratio: ${format}`} role="img" aria-label={`Platzhalter: ${label}`}>
+  <span>{label}</span>
+</div>
+
+<style>
+  .platzhalter {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    text-align: center;
+    border-radius: var(--radius);
+    color: var(--stahl);
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0 14px,
+        rgba(36, 62, 91, 0.06) 14px 28px
+      ),
+      #dfe5eb;
+    border: 2px dashed #aab6c3;
+  }
+
+  span {
+    font-family: var(--schrift-titel);
+    font-weight: 600;
+    font-size: 1.05rem;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius);
+  }
+</style>

@@ -1,0 +1,259 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import kunde from '../../data/kunde.json';
+import { stellen, bewerbungsMail } from '../../lib/stellen.js';
+import { url, telLink } from '../../lib/url.js';
+import Icon from '../../components/Icon.astro';
+import Hinweis from '../../components/Hinweis.astro';
+
+export function getStaticPaths() {
+  return stellen.map((stelle) => ({
+    params: { slug: stelle.slug },
+    props: { stelle },
+  }));
+}
+
+const { stelle } = Astro.props;
+const k = kunde.kontakt;
+const h = kunde.standorte[0];
+
+// Strukturierte Daten für Google-Jobsuche (greift erst, wenn die Seite indexiert wird)
+const jobdaten = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: stelle.titel,
+  description: [
+    `<p>${stelle.kurz}</p>`,
+    `<p>Aufgaben:</p><ul>${stelle.aufgaben.map((a) => `<li>${a}</li>`).join('')}</ul>`,
+    `<p>Profil:</p><ul>${stelle.profil.map((a) => `<li>${a}</li>`).join('')}</ul>`,
+    `<p>Wir bieten:</p><ul>${stelle.angebot.map((a) => `<li>${a}</li>`).join('')}</ul>`,
+  ].join(''),
+  datePosted: stelle.veroeffentlicht,
+  employmentType: stelle.art.toLowerCase().includes('teilzeit') ? 'PART_TIME' : 'FULL_TIME',
+  hiringOrganization: {
+    '@type': 'Organization',
+    name: kunde.firma,
+    sameAs: `https://${kunde.domain}`,
+  },
+  jobLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: h.strasse,
+      postalCode: h.ort.split(' ')[0],
+      addressLocality: h.ort.split(' ').slice(1).join(' '),
+      addressCountry: 'DE',
+    },
+  },
+};
+---
+
+<Basis titel={stelle.titel} beschreibung={stelle.kurz} strukturdaten={stelle.platzhalter ? null : jobdaten}>
+
+  <section class="kopfbereich">
+    <div class="wrap">
+      <a class="zurueck" href={url('karriere/')}>
+        <Icon name="zurueck" />
+        Alle Stellen
+      </a>
+      <h1>{stelle.titel}</h1>
+      <ul class="merkmale">
+        <li class="merkmal">{stelle.art}</li>
+        <li class="merkmal">{stelle.start}</li>
+        <li class="merkmal">{stelle.ort}</li>
+      </ul>
+      <p class="kopfbereich__intro">{stelle.kurz}</p>
+      {kunde.entwurf && stelle.platzhalter && <Hinweis text="Diese Anzeige ist ein Platzhalter und erscheint nicht auf der fertigen Seite, solange sie so markiert ist." />}
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="wrap stelle">
+      <div class="stelle__inhalt">
+        <h2>Deine Aufgaben</h2>
+        <ul class="hakenliste">
+          {
+            stelle.aufgaben.map((a) => (
+              <li>
+                <Icon name="haken" />
+                <span>{a}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <h2>Das bringst du mit</h2>
+        <ul class="hakenliste">
+          {
+            stelle.profil.map((a) => (
+              <li>
+                <Icon name="haken" />
+                <span>{a}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <h2>Das bieten wir dir</h2>
+        <ul class="hakenliste">
+          {
+            stelle.angebot.map((a) => (
+              <li>
+                <Icon name="haken" />
+                <span>{a}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        {
+          kunde.entwurf && stelle.offen?.length > 0 && (
+            <aside class="hinweis">
+              <strong>Zu klären:</strong>
+              <ul class="offen">
+                {stelle.offen.map((o) => (
+                  <li>{o}</li>
+                ))}
+              </ul>
+            </aside>
+          )
+        }
+      </div>
+
+      <aside class="bewerben" aria-labelledby="bewerben-titel">
+        <h2 id="bewerben-titel">Jetzt bewerben</h2>
+        <p>{kunde.bewerbung.text}</p>
+        <p class="bewerben__person">
+          Ansprechpartner:<br /><strong>{kunde.bewerbung.ansprechpartner}</strong>
+        </p>
+        <div class="bewerben__knoepfe">
+          <a class="btn btn--rot" href={bewerbungsMail(stelle)}>
+            <Icon name="mail" />
+            Per Mail bewerben
+          </a>
+          <a class="btn btn--rahmen-dunkel" href={telLink(k.telefon)}>
+            <Icon name="telefon" />
+            {k.telefonAnzeige}
+          </a>
+          {
+            k.whatsapp && (
+              <a class="btn btn--rahmen-dunkel" href={`https://wa.me/${k.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener">
+                <Icon name="chat" />
+                Per WhatsApp
+              </a>
+            )
+          }
+        </div>
+        {!k.whatsapp && <Hinweis text="Bewerbung per WhatsApp anbieten? Senkt die Hürde für viele Bewerber." />}
+      </aside>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .kopfbereich {
+    background: var(--navy);
+    color: var(--weiss);
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .kopfbereich h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    max-width: 22ch;
+  }
+
+  .zurueck {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+    color: #d5dee8;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .zurueck:hover {
+    color: var(--weiss);
+  }
+
+  .zurueck :global(svg) {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .merkmale {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .kopfbereich__intro {
+    font-size: 1.25rem;
+    color: #d5dee8;
+  }
+
+  .stelle {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .stelle__inhalt h2 {
+    font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+    color: var(--navy);
+    margin-top: 2.2rem;
+  }
+
+  .stelle__inhalt h2:first-child {
+    margin-top: 0;
+  }
+
+  .offen {
+    margin: 0.4rem 0 0 1.2rem;
+  }
+
+  .bewerben {
+    position: sticky;
+    top: calc(var(--kopf-hoehe) + 1.5rem);
+    padding: 1.8rem;
+    background: var(--beton);
+    border-top: 6px solid var(--rot);
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+
+  .bewerben h2 {
+    font-size: 1.8rem;
+    color: var(--navy);
+  }
+
+  .bewerben__person {
+    color: var(--stahl);
+  }
+
+  .bewerben__person strong {
+    color: var(--tinte);
+    font-size: 1.15rem;
+  }
+
+  .bewerben__knoepfe {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .bewerben__knoepfe .btn {
+    justify-content: center;
+  }
+
+  @media (max-width: 860px) {
+    .stelle {
+      grid-template-columns: 1fr;
+    }
+
+    .bewerben {
+      position: static;
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import '@fontsource/saira-semi-condensed/600.css';
+import '@fontsource/saira-semi-condensed/700.css';
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/600.css';
+import '../styles/global.css';
+
+import kunde from '../data/kunde.json';
+import { url } from '../lib/url.js';
+import Kopf from '../components/Kopf.astro';
+import Fuss from '../components/Fuss.astro';
+
+const { titel, beschreibung = kunde.intro, strukturdaten = null } = Astro.props;
+const seitentitel = titel ? `${titel} | ${kunde.kurzname}` : `${kunde.firma} in Kirchdorf`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seitentitel}</title>
+    <meta name="description" content={beschreibung} />
+    {kunde.entwurf && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#243e5b" />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <meta property="og:title" content={seitentitel} />
+    <meta property="og:description" content={beschreibung} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    {strukturdaten && <script is:inline type="application/ld+json" set:html={JSON.stringify(strukturdaten)}></script>}
+  </head>
+  <body>
+    <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
+    {
+      kunde.entwurf && (
+        <div class="entwurf-leiste">
+          Entwurf von {kunde.agentur.name} – nur zur Ansicht, noch nicht öffentlich. Gelb markierte Stellen klären wir
+          gemeinsam.
+        </div>
+      )
+    }
+    <Kopf />
+    <main id="inhalt">
+      <slot />
+    </main>
+    <Fuss />
+  </body>
+</html>

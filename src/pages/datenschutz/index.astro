@@ -1,0 +1,68 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import kunde from '../../data/kunde.json';
+import Hinweis from '../../components/Hinweis.astro';
+
+const h = kunde.standorte[0];
+
+// Gliederung als Gerüst. Die Texte kommen aus einem geprüften Generator
+// oder von einer fachkundigen Stelle – nicht selbst formulieren.
+const abschnitte = [
+  'Verantwortliche Stelle',
+  'Hosting der Website',
+  'Server-Logfiles',
+  'Kontakt per E-Mail und Telefon',
+  'Bewerbungen',
+  'Links zu sozialen Netzwerken und Google Maps',
+  'Schriftarten (lokal eingebunden)',
+  'Ihre Rechte',
+  'Beschwerderecht bei der Aufsichtsbehörde',
+];
+---
+
+<Basis titel="Datenschutz">
+  <section class="abschnitt">
+    <div class="wrap recht">
+      <h1>Datenschutzerklärung</h1>
+      <Hinweis>
+        Platzhalter. Diese Seite braucht einen geprüften Datenschutztext. Der Entwurf läuft auf GitHub Pages (Anbieter mit
+        Sitz in den USA) – für die fertige Seite ist ein Hoster in Deutschland geplant. Der Abschnitt „Bewerbungen“ ist
+        wegen der Karriereseite Pflicht.
+      </Hinweis>
+
+      <h2>{abschnitte[0]}</h2>
+      <p>
+        {kunde.inhaber}<br />
+        {kunde.firma}<br />
+        {h.strasse}, {h.ort}<br />
+        E-Mail: {kunde.kontakt.email}
+      </p>
+
+      {
+        abschnitte.slice(1).map((titel) => (
+          <>
+            <h2>{titel}</h2>
+            <p class="leer">Text folgt.</p>
+          </>
+        ))
+      }
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .recht {
+    max-width: 48rem;
+  }
+
+  .recht h2 {
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-top: 2rem;
+  }
+
+  .leer {
+    color: var(--stahl);
+    font-style: italic;
+  }
+</style>

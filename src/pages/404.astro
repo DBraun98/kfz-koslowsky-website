@@ -1,0 +1,18 @@
+---
+import Basis from '../layouts/Basis.astro';
+import kunde from '../data/kunde.json';
+import { url, telLink } from '../lib/url.js';
+---
+
+<Basis titel="Seite nicht gefunden">
+  <section class="abschnitt">
+    <div class="wrap">
+      <h1>Diese Seite gibt es nicht</h1>
+      <p class="einleitung">Der Link ist veraltet oder falsch geschrieben. Von der Startseite aus finden Sie alles.</p>
+      <p style="display:flex;flex-wrap:wrap;gap:.8rem">
+        <a class="btn btn--navy" href={url('')}>Zur Startseite</a>
+        <a class="btn btn--rahmen-dunkel" href={telLink(kunde.kontakt.telefon)}>{kunde.kontakt.telefonAnzeige}</a>
+      </p>
+    </div>
+  </section>
+</Basis>

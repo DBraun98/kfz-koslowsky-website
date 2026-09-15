@@ -1,0 +1,12 @@
+# Abhängigkeiten und Build-Ergebnis – nie hochladen
+node_modules/
+dist/
+.astro/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Umgebungsvariablen
+.env
+.env.*
